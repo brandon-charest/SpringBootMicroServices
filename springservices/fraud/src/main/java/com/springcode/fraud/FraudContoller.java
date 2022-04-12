@@ -13,6 +13,7 @@ public record FraudContoller(FraudCheckService fraudCheckService) {
 
   @GetMapping(path="{customerId}")
   public FraudCheckResponse isFraudster(@PathVariable("customerId") Integer customerId) {
+    log.info("fraud check request for customer {}", customerId);
     return new FraudCheckResponse(fraudCheckService.isFraudulentCustomer(customerId));
   }
 }
